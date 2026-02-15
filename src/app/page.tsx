@@ -1,8 +1,13 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { SmokeAnimation } from '@/components/smoke-animation'
 
 export default function Home() {
+  const [scale, setScale] = useState(100)
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* ===== NAV ===== */}
@@ -39,9 +44,28 @@ export default function Home() {
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-6">
           Facility Carbon Intelligence
         </p>
-        <h1 className="text-6xl font-light tracking-tight leading-[1.1] mb-8">
+        <h1 className="text-6xl font-light tracking-tight leading-[1.1] mb-6">
           Estimate<br />Emissions
         </h1>
+
+        {/* ===== EMISSION SCALE ===== */}
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground whitespace-nowrap">
+            Emissions
+          </span>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={scale}
+            onChange={(e) => setScale(Number(e.target.value))}
+            className="w-40 h-1 accent-foreground cursor-pointer"
+          />
+          <span className="text-xs font-bold tabular-nums w-8 text-right">
+            {scale}%
+          </span>
+        </div>
+
         <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-8 leading-relaxed">
           Precision carbon accounting for commercial portfolios.
           Measure, model, and reduce. With architectural clarity.
@@ -63,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* ===== FACTORY SMOKE ===== */}
-      <SmokeAnimation />
+      <SmokeAnimation scale={scale / 100} />
 
       {/* ===== CAPABILITIES GRID ===== */}
       <section className="max-w-5xl mx-auto px-6 py-20">

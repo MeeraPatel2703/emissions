@@ -13,12 +13,21 @@ interface Particle {
   maxLife: number
 }
 
-export function SmokeAnimation() {
+interface SmokeAnimationProps {
+  scale: number // 0 to 1
+}
+
+export function SmokeAnimation({ scale }: SmokeAnimationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const particlesRef = useRef<Particle[]>([])
   const scrollProgressRef = useRef(0)
   const animFrameRef = useRef<number>(0)
+  const scaleRef = useRef(scale)
+
+  useEffect(() => {
+    scaleRef.current = scale
+  }, [scale])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -28,13 +37,11 @@ export function SmokeAnimation() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    // Canvas covers from top of page down through the factory
     const resize = () => {
       const rect = container.getBoundingClientRect()
       const scrollY = window.scrollY
       const containerTop = rect.top + scrollY
       canvas.width = container.clientWidth
-      // Canvas height = from page top to bottom of container
       canvas.height = containerTop + container.clientHeight
     }
     resize()
@@ -51,7 +58,6 @@ export function SmokeAnimation() {
 
     const stacks = [0.35, 0.42, 0.58, 0.65]
 
-    // Factory is drawn at the bottom of the canvas (which aligns with the container)
     const getFactoryBaseY = () => {
       return canvas.height - container.clientHeight * 0.65
     }
@@ -60,13 +66,14 @@ export function SmokeAnimation() {
       const w = canvas.width
       const factoryTop = getFactoryBaseY()
       const stackTop = factoryTop - container.clientHeight * 0.14
+      const s = scaleRef.current
       return {
         x: stackX * w + (Math.random() - 0.5) * 8,
         y: stackTop,
         vx: (Math.random() - 0.5) * 0.6,
-        vy: -(0.6 + Math.random() * 1.4),
-        size: 4 + Math.random() * 10,
-        opacity: 0.12 + Math.random() * 0.2,
+        vy: -(0.6 + Math.random() * 1.4) * (0.4 + s * 0.6),
+        size: (4 + Math.random() * 10) * (0.5 + s * 0.5),
+        opacity: (0.12 + Math.random() * 0.2) * (0.3 + s * 0.7),
         life: 0,
         maxLife: 250 + Math.random() * 300,
       }
@@ -79,17 +86,14 @@ export function SmokeAnimation() {
       const factoryTop = canvas.height - ch * 0.65
       ctx.fillStyle = '#14532d'
 
-      // Main building: from factoryTop to bottom of canvas
       ctx.fillRect(w * 0.28, factoryTop, w * 0.44, canvas.height - factoryTop)
 
-      // Smokestacks
       const stackH = ch * 0.14
       for (const sx of stacks) {
         ctx.fillRect(sx * w - 4, factoryTop - stackH, 8, stackH)
         ctx.fillRect(sx * w - 6, factoryTop - stackH, 12, 4)
       }
 
-      // Windows
       ctx.fillStyle = '#dcfce7'
       for (let row = 0; row < 3; row++) {
         for (let col = 0; col < 6; col++) {
@@ -99,7 +103,6 @@ export function SmokeAnimation() {
         }
       }
 
-      // Roofline
       ctx.fillStyle = '#14532d'
       ctx.fillRect(w * 0.26, factoryTop - 2, w * 0.48, 4)
     }
@@ -108,12 +111,13 @@ export function SmokeAnimation() {
       const w = canvas.width
       const h = canvas.height
       const progress = scrollProgressRef.current
+      const s = scaleRef.current
 
       ctx.clearRect(0, 0, w, h)
 
       spawnTimer++
-      if (progress > 0.05 && spawnTimer % 2 === 0) {
-        const intensity = Math.min(1, (progress - 0.05) / 0.4)
+      if (progress > 0.05 && spawnTimer % 2 === 0 && s > 0) {
+        const intensity = Math.min(1, (progress - 0.05) / 0.4) * s
         for (const sx of stacks) {
           if (Math.random() < intensity * 0.8) {
             particlesRef.current.push(spawnParticle(sx))
@@ -125,7 +129,6 @@ export function SmokeAnimation() {
       for (const p of particlesRef.current) {
         p.life++
         if (p.life > p.maxLife) continue
-        // Remove particles that have gone above the canvas
         if (p.y < -20) continue
 
         const lifeRatio = p.life / p.maxLife
