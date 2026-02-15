@@ -66,18 +66,18 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
     <motion.div variants={fadeIn} initial="hidden" animate="show" className="space-y-6">
 
       {/* ===== TOP INFO BAR ===== */}
-      <motion.div variants={item} className="border border-border bg-foreground text-background px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-6">
+      <motion.div variants={item} className="border border-border bg-foreground text-background px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-6">
           <span className="text-xs uppercase tracking-[0.2em] font-bold">
             Facility Carbon Intelligence System
           </span>
           <span className="text-xs opacity-60">
             Region: {facility?.location.state ?? facility?.location.country ?? 'US'}
           </span>
-          <span className="text-xs opacity-60">
+          <span className="text-xs opacity-60 hidden sm:inline">
             Type: {facility?.buildingType ?? 'office'}
           </span>
-          <span className="text-xs opacity-60">
+          <span className="text-xs opacity-60 hidden sm:inline">
             Period: FY{new Date().getFullYear()}
           </span>
         </div>
@@ -85,7 +85,7 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
       </motion.div>
 
       {/* ===== 4 METRIC CARDS ===== */}
-      <motion.div variants={item} className="grid grid-cols-4 gap-4">
+      <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
             label: 'TOTAL CO\u2082E',
@@ -112,15 +112,15 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
             sub: `Overall: ${result.uncertainty.overallDataQuality}`,
           },
         ].map((card) => (
-          <div key={card.label} className="relative border border-border p-5">
+          <div key={card.label} className="relative border border-border p-4 sm:p-5">
             <span className="absolute -top-1.5 -left-1.5 text-muted-foreground text-[10px] leading-none">&#x250C;</span>
             <span className="absolute -bottom-1.5 -right-1.5 text-muted-foreground text-[10px] leading-none">&#x2518;</span>
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">{card.label}</p>
-            <p className="text-3xl font-bold tracking-tight">
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 sm:mb-3">{card.label}</p>
+            <p className="text-2xl sm:text-3xl font-bold tracking-tight">
               {card.value}
-              <span className="text-xs font-normal text-muted-foreground ml-1">{card.unit}</span>
+              <span className="text-[10px] sm:text-xs font-normal text-muted-foreground ml-1">{card.unit}</span>
             </p>
-            <p className="text-xs text-muted-foreground mt-1">{card.sub}</p>
+            <p className="text-[10px] sm:text-xs text-muted-foreground mt-1 truncate">{card.sub}</p>
             <div className="mt-3">
               <MiniSparkline values={fakeSparkline(parseFloat(card.value.replace(/,/g, '')) || 10)} />
             </div>
@@ -129,7 +129,7 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
       </motion.div>
 
       {/* ===== 3 SCOPE CARDS ===== */}
-      <motion.div variants={item} className="grid grid-cols-3 gap-4">
+      <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <ScopeCard
           title="Scope 1"
           subtitle="Direct"
@@ -155,54 +155,56 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
 
       {/* ===== EMISSIONS BY SOURCE TABLE ===== */}
       <motion.div variants={item} className="border border-border">
-        <div className="px-6 py-4 border-b border-border">
+        <div className="px-4 sm:px-6 py-4 border-b border-border">
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground text-[10px]">&#x2502;</span>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Emissions by Source</span>
           </div>
         </div>
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-border">
-              <th className="text-left px-6 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Source</th>
-              <th className="text-left px-4 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Scope</th>
-              <th className="text-right px-4 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Emissions</th>
-              <th className="text-right px-4 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Intensity</th>
-              <th className="text-right px-6 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Trend</th>
-            </tr>
-          </thead>
-          <tbody>
-            {result.breakdown
-              .filter(cat => cat.value > 0.01 && cat.category !== 'grid_electricity_market')
-              .sort((a, b) => b.value - a.value)
-              .slice(0, 10)
-              .map((cat, i) => (
-                <tr key={`${cat.category}-${cat.subcategory}-${i}`} className="border-b border-border last:border-b-0">
-                  <td className="px-6 py-3 font-medium">{CATEGORY_LABELS[cat.category] ?? cat.subcategory ?? cat.category.replace(/_/g, ' ')}</td>
-                  <td className="px-4 py-3 text-muted-foreground">{SCOPE_LABELS[cat.scope]}</td>
-                  <td className="px-4 py-3 text-right font-bold">{formatNumber(cat.value)} t</td>
-                  <td className="px-4 py-3 text-right text-muted-foreground">{((cat.value * 1000) / sqft).toFixed(1)} kg/sqft</td>
-                  <td className="px-6 py-3 text-right">
-                    <div className="flex justify-end">
-                      <MiniSparkline values={fakeSparkline(cat.value)} height={16} />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[500px]">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left px-4 sm:px-6 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Source</th>
+                <th className="text-left px-4 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Scope</th>
+                <th className="text-right px-4 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Emissions</th>
+                <th className="text-right px-4 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium hidden sm:table-cell">Intensity</th>
+                <th className="text-right px-4 sm:px-6 py-3 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium hidden sm:table-cell">Trend</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.breakdown
+                .filter(cat => cat.value > 0.01 && cat.category !== 'grid_electricity_market')
+                .sort((a, b) => b.value - a.value)
+                .slice(0, 10)
+                .map((cat, i) => (
+                  <tr key={`${cat.category}-${cat.subcategory}-${i}`} className="border-b border-border last:border-b-0">
+                    <td className="px-4 sm:px-6 py-3 font-medium">{CATEGORY_LABELS[cat.category] ?? cat.subcategory ?? cat.category.replace(/_/g, ' ')}</td>
+                    <td className="px-4 py-3 text-muted-foreground">{SCOPE_LABELS[cat.scope]}</td>
+                    <td className="px-4 py-3 text-right font-bold">{formatNumber(cat.value)} t</td>
+                    <td className="px-4 py-3 text-right text-muted-foreground hidden sm:table-cell">{((cat.value * 1000) / sqft).toFixed(1)} kg/sqft</td>
+                    <td className="px-4 sm:px-6 py-3 text-right hidden sm:table-cell">
+                      <div className="flex justify-end">
+                        <MiniSparkline values={fakeSparkline(cat.value)} height={16} />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </motion.div>
 
       {/* ===== CHARTS ===== */}
-      <motion.div variants={item} className="grid grid-cols-2 gap-4">
-        <div className="border border-border p-6">
+      <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="border border-border p-4 sm:p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-muted-foreground text-[10px]">&#x251C;</span>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Emissions by Scope</span>
           </div>
           <ScopeDonut result={result} />
         </div>
-        <div className="border border-border p-6">
+        <div className="border border-border p-4 sm:p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-muted-foreground text-[10px]">&#x251C;</span>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Emissions by Source</span>
@@ -212,7 +214,7 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
       </motion.div>
 
       {/* ===== BENCHMARK ===== */}
-      <motion.div variants={item} className="border border-border p-6">
+      <motion.div variants={item} className="border border-border p-4 sm:p-6">
         <div className="flex items-center gap-2 mb-4">
           <span className="text-muted-foreground text-[10px]">&#x251C;</span>
           <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Industry Benchmark</span>
@@ -221,12 +223,12 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
       </motion.div>
 
       {/* ===== UNCERTAINTY & MC ===== */}
-      <motion.div variants={item} className="border border-border p-6 space-y-4">
+      <motion.div variants={item} className="border border-border p-4 sm:p-6 space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-muted-foreground text-[10px]">&#x251C;</span>
           <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Uncertainty Analysis</span>
         </div>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <div>
             <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">95% Confidence Interval</p>
             <p className="text-lg font-bold mt-1">
@@ -253,7 +255,7 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
                 Monte Carlo Distribution ({mcResult.runs} runs, seed={mcResult.seed})
               </p>
               <McHistogram distribution={mcResult.totalEmissions} />
-              <div className="grid grid-cols-3 gap-4 mt-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 text-xs">
                 <div>
                   <p className="text-muted-foreground uppercase tracking-wider">Scope 1 (95% CI)</p>
                   <p className="font-bold">{mcResult.scope1.ci95Lower.toFixed(1)} &ndash; {mcResult.scope1.ci95Upper.toFixed(1)}</p>
@@ -274,7 +276,7 @@ export function ResultsDashboard({ result, facilityName, facility, factors, mcRe
 
       {/* ===== SCENARIO BUILDER ===== */}
       {facility && factors && (
-        <motion.div variants={item} className="border border-border p-6">
+        <motion.div variants={item} className="border border-border p-4 sm:p-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-muted-foreground text-[10px]">&#x251C;</span>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Decarbonization Scenarios</span>

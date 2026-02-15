@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { SmokeAnimation } from '@/components/smoke-animation'
@@ -8,43 +8,51 @@ import { SmokeAnimation } from '@/components/smoke-animation'
 export default function Home() {
   const [scale, setScale] = useState(100)
 
+  useEffect(() => {
+    fetch('/api/visits', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: '/' }),
+    }).catch(() => {})
+  }, [])
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* ===== NAV ===== */}
       <nav className="border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <span className="text-muted-foreground text-sm">&#x250C;</span>
             <span className="font-bold text-sm uppercase tracking-[0.2em]">Carbon OS</span>
           </div>
-          <div className="flex items-center gap-8">
-            <Link href="/dashboard" className="text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors">
+          <div className="flex items-center gap-4 sm:gap-8">
+            <Link href="/dashboard" className="hidden sm:block text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors">
               Platform
             </Link>
-            <Link href="/methodology" className="text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/methodology" className="hidden sm:block text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors">
               Methodology
             </Link>
-            <Link href="/methodology" className="text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/methodology" className="hidden md:block text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors">
               Documentation
             </Link>
             <ThemeToggle />
             <Link
               href="/dashboard"
-              className="border border-foreground px-4 py-2 text-xs uppercase tracking-[0.15em] hover:bg-foreground hover:text-background transition-colors"
+              className="border border-foreground px-3 sm:px-4 py-2 text-xs uppercase tracking-[0.15em] hover:bg-foreground hover:text-background transition-colors"
             >
-              Open Dashboard &rarr;
+              Dashboard &rarr;
             </Link>
           </div>
         </div>
       </nav>
 
       {/* ===== HERO ===== */}
-      <section className="max-w-3xl mx-auto px-6 pt-8 pb-6 text-center">
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-6 text-center">
         <div className="w-16 h-px bg-border mx-auto mb-4" />
         <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-6">
           Facility Carbon Intelligence
         </p>
-        <h1 className="text-6xl font-light tracking-tight leading-[1.1] mb-6">
+        <h1 className="text-4xl sm:text-6xl font-light tracking-tight leading-[1.1] mb-6">
           Estimate<br />Emissions
         </h1>
 
@@ -59,7 +67,7 @@ export default function Home() {
             max={100}
             value={scale}
             onChange={(e) => setScale(Number(e.target.value))}
-            className="w-40 h-1 accent-foreground cursor-pointer"
+            className="w-28 sm:w-40 h-1 accent-foreground cursor-pointer"
           />
           <span className="text-xs font-bold tabular-nums w-8 text-right">
             {scale}%
@@ -70,7 +78,7 @@ export default function Home() {
           Precision carbon accounting for commercial portfolios.
           Measure, model, and reduce. With architectural clarity.
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
           <Link
             href="/dashboard"
             className="bg-foreground text-background px-8 py-3.5 text-xs uppercase tracking-[0.15em] font-medium hover:opacity-90 transition-opacity"
@@ -90,12 +98,12 @@ export default function Home() {
       <SmokeAnimation scale={scale / 100} />
 
       {/* ===== CAPABILITIES GRID ===== */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="flex items-center gap-3 mb-10">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="flex items-center gap-3 mb-8 sm:mb-10">
           <span className="text-muted-foreground">&#x251C;</span>
           <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">System Capabilities</p>
         </div>
-        <div className="grid grid-cols-2 border border-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 border border-border">
           {[
             {
               title: 'Scope 1\u20133 Analysis',
@@ -116,7 +124,7 @@ export default function Home() {
           ].map((cap, i) => (
             <div
               key={cap.title}
-              className={`p-10 ${i % 2 === 0 ? 'border-r border-border' : ''} ${i < 2 ? 'border-b border-border' : ''}`}
+              className={`p-6 sm:p-10 ${i % 2 === 0 ? 'sm:border-r border-border' : ''} ${i < 3 ? 'border-b border-border' : ''} ${i === 2 ? 'sm:border-b' : ''} ${i === 3 ? 'sm:border-b-0' : ''}`}
             >
               <div className="flex items-start gap-2">
                 <span className="text-muted-foreground mt-0.5">&middot;</span>
@@ -132,11 +140,11 @@ export default function Home() {
 
       {/* ===== FOOTER ===== */}
       <footer className="border-t border-border">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground text-sm">&#x2514;</span>
             <span className="text-xs text-muted-foreground">
-              Carbon OS v2.4.1 / Precision Carbon Intelligence
+              Carbon OS v2.4.1
             </span>
           </div>
           <span className="text-muted-foreground text-sm">&#x2518;</span>

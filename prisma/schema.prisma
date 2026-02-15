@@ -207,6 +207,15 @@ model Benchmark {
 // SCENARIOS
 // ═══════════════════════════════════════════════════
 
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  createdAt DateTime @default(now())
+
+  @@index([path])
+  @@index([createdAt])
+}
+
 model Scenario {
   id                   String   @id @default(cuid())
   facilityId           String

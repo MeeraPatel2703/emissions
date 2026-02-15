@@ -64,7 +64,7 @@ export function ReviewStep() {
   return (
     <div className="space-y-6">
       {/* Input Summary */}
-      <div className="grid grid-cols-2 gap-4 text-sm">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
         <div className="p-3 bg-muted rounded-lg">
           <div className="font-medium">Facility</div>
           <div>{store.name || 'Unnamed'} / {store.buildingType}</div>
