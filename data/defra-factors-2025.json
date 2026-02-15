@@ -1,0 +1,143 @@
+{
+  "source": "defra_desnz",
+  "version": "2025",
+  "region": "UK",
+  "citation": "UK Department for Energy Security and Net Zero (DESNZ), Greenhouse Gas Reporting: Conversion Factors 2025",
+  "categories": {
+    "fuels": {
+      "natural_gas": {
+        "kg_co2e_per_kwh": 0.18254,
+        "kg_co2e_per_therm": 5.3531,
+        "note": "Gross CV basis"
+      },
+      "diesel_mineral": {
+        "kg_co2e_per_litre": 2.51233,
+        "kg_co2e_per_gallon": 9.5099
+      },
+      "petrol": {
+        "kg_co2e_per_litre": 2.16186,
+        "kg_co2e_per_gallon": 8.1835
+      },
+      "fuel_oil": {
+        "kg_co2e_per_litre": 2.75843,
+        "kg_co2e_per_gallon": 10.4414
+      },
+      "lpg": {
+        "kg_co2e_per_litre": 1.55370,
+        "kg_co2e_per_gallon": 5.8803
+      },
+      "coal_industrial": {
+        "kg_co2e_per_tonne": 2256.16
+      }
+    },
+    "uk_electricity": {
+      "generation": {
+        "kg_co2e_per_kwh": 0.12777,
+        "note": "UK grid average generation factor"
+      },
+      "transmission_distribution": {
+        "kg_co2e_per_kwh": 0.01772,
+        "note": "T&D losses"
+      },
+      "total_location_based": {
+        "kg_co2e_per_kwh": 0.14549,
+        "note": "Generation + T&D = location-based total"
+      }
+    },
+    "water": {
+      "supply": {
+        "kg_co2e_per_m3": 0.110,
+        "kg_co2e_per_1000_gallons": 0.4163,
+        "note": "Water supply: treatment and distribution"
+      },
+      "treatment": {
+        "kg_co2e_per_m3": 0.230,
+        "kg_co2e_per_1000_gallons": 0.8706,
+        "note": "Wastewater treatment"
+      }
+    },
+    "waste": {
+      "mixed_municipal_landfill": {
+        "kg_co2e_per_tonne": 467.0,
+        "note": "Without energy recovery"
+      },
+      "mixed_municipal_incineration": {
+        "kg_co2e_per_tonne": 21.35,
+        "note": "With energy recovery"
+      },
+      "mixed_recycling": {
+        "kg_co2e_per_tonne": 21.35,
+        "note": "Open-loop recycling"
+      },
+      "food_composting": {
+        "kg_co2e_per_tonne": 10.20
+      },
+      "food_anaerobic_digestion": {
+        "kg_co2e_per_tonne": 10.20
+      },
+      "paper_recycling": {
+        "kg_co2e_per_tonne": 21.35
+      },
+      "metal_recycling": {
+        "kg_co2e_per_tonne": 21.35
+      },
+      "plastic_recycling": {
+        "kg_co2e_per_tonne": 21.35
+      }
+    },
+    "business_travel": {
+      "car_average_petrol": {
+        "kg_co2e_per_km": 0.17029,
+        "kg_co2e_per_mile": 0.27403
+      },
+      "car_average_diesel": {
+        "kg_co2e_per_km": 0.16571,
+        "kg_co2e_per_mile": 0.26666
+      },
+      "car_average_hybrid": {
+        "kg_co2e_per_km": 0.11530,
+        "kg_co2e_per_mile": 0.18556
+      },
+      "car_average_ev": {
+        "kg_co2e_per_km": 0.04569,
+        "kg_co2e_per_mile": 0.07353
+      },
+      "domestic_flight": {
+        "kg_co2e_per_passenger_km": 0.24587,
+        "kg_co2e_per_passenger_mile": 0.39564
+      },
+      "short_haul_flight": {
+        "kg_co2e_per_passenger_km": 0.15353,
+        "kg_co2e_per_passenger_mile": 0.24709
+      },
+      "long_haul_flight": {
+        "kg_co2e_per_passenger_km": 0.19309,
+        "kg_co2e_per_passenger_mile": 0.31077
+      },
+      "rail_national": {
+        "kg_co2e_per_passenger_km": 0.03549,
+        "kg_co2e_per_passenger_mile": 0.05712
+      },
+      "hotel_night_uk": {
+        "kg_co2e_per_night": 11.28
+      }
+    },
+    "freight": {
+      "hgv_average": {
+        "kg_co2e_per_tonne_km": 0.10694
+      },
+      "van_average": {
+        "kg_co2e_per_tonne_km": 0.58677
+      },
+      "rail_freight": {
+        "kg_co2e_per_tonne_km": 0.02517
+      },
+      "sea_freight_container": {
+        "kg_co2e_per_tonne_km": 0.01618
+      },
+      "air_freight_long_haul": {
+        "kg_co2e_per_tonne_km": 0.59851
+      }
+    }
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "source": "egrid",
+  "version": "egrid2023",
+  "dataYear": 2023,
+  "citation": "U.S. EPA, Emissions & Generation Resource Integrated Database (eGRID), eGRID2023",
+  "unit_note": "co2e_kg_per_kwh is the total output emission rate including CO2, CH4, N2O converted to CO2e using AR5 GWPs (per eGRID convention)",
+  "subregions": {
+    "AKGD": {
+      "name": "ASCC Alaska Grid",
+      "co2e_lb_per_mwh": 1087.42,
+      "co2e_kg_per_kwh": 0.4932,
+      "grid_gross_loss_pct": 0.0562,
+      "states": ["AK"]
+    },
+    "AKMS": {
+      "name": "ASCC Miscellaneous",
+      "co2e_lb_per_mwh": 481.60,
+      "co2e_kg_per_kwh": 0.2184,
+      "grid_gross_loss_pct": 0.0562,
+      "states": ["AK"]
+    },
+    "AZNM": {
+      "name": "WECC Southwest",
+      "co2e_lb_per_mwh": 726.72,
+      "co2e_kg_per_kwh": 0.3296,
+      "grid_gross_loss_pct": 0.0512,
+      "states": ["AZ", "NM"]
+    },
+    "CAMX": {
+      "name": "WECC California",
+      "co2e_lb_per_mwh": 483.84,
+      "co2e_kg_per_kwh": 0.2195,
+      "grid_gross_loss_pct": 0.0512,
+      "states": ["CA"]
+    },
+    "ERCT": {
+      "name": "ERCOT All",
+      "co2e_lb_per_mwh": 768.67,
+      "co2e_kg_per_kwh": 0.3487,
+      "grid_gross_loss_pct": 0.0528,
+      "states": ["TX"]
+    },
+    "FRCC": {
+      "name": "FRCC All",
+      "co2e_lb_per_mwh": 805.11,
+      "co2e_kg_per_kwh": 0.3652,
+      "grid_gross_loss_pct": 0.0547,
+      "states": ["FL"]
+    },
+    "HIMS": {
+      "name": "HICC Miscellaneous",
+      "co2e_lb_per_mwh": 1252.65,
+      "co2e_kg_per_kwh": 0.5682,
+      "grid_gross_loss_pct": 0.0600,
+      "states": ["HI"]
+    },
+    "HIOA": {
+      "name": "HICC Oahu",
+      "co2e_lb_per_mwh": 1413.87,
+      "co2e_kg_per_kwh": 0.6413,
+      "grid_gross_loss_pct": 0.0600,
+      "states": ["HI"]
+    },
+    "MROE": {
+      "name": "MRO East",
+      "co2e_lb_per_mwh": 1005.55,
+      "co2e_kg_per_kwh": 0.4561,
+      "grid_gross_loss_pct": 0.0541,
+      "states": ["WI", "MI"]
+    },
+    "MROW": {
+      "name": "MRO West",
+      "co2e_lb_per_mwh": 851.03,
+      "co2e_kg_per_kwh": 0.3860,
+      "grid_gross_loss_pct": 0.0541,
+      "states": ["MN", "IA", "ND", "SD", "NE", "MT"]
+    },
+    "NEWE": {
+      "name": "NPCC New England",
+      "co2e_lb_per_mwh": 398.38,
+      "co2e_kg_per_kwh": 0.1807,
+      "grid_gross_loss_pct": 0.0482,
+      "states": ["CT", "ME", "MA", "NH", "RI", "VT"]
+    },
+    "NWPP": {
+      "name": "WECC Northwest",
+      "co2e_lb_per_mwh": 542.93,
+      "co2e_kg_per_kwh": 0.2463,
+      "grid_gross_loss_pct": 0.0512,
+      "states": ["WA", "OR", "ID", "UT", "WY", "CO"]
+    },
+    "NYCW": {
+      "name": "NPCC NYC/Westchester",
+      "co2e_lb_per_mwh": 495.46,
+      "co2e_kg_per_kwh": 0.2247,
+      "grid_gross_loss_pct": 0.0482,
+      "states": ["NY"]
+    },
+    "NYLI": {
+      "name": "NPCC Long Island",
+      "co2e_lb_per_mwh": 1034.54,
+      "co2e_kg_per_kwh": 0.4693,
+      "grid_gross_loss_pct": 0.0482,
+      "states": ["NY"]
+    },
+    "NYUP": {
+      "name": "NPCC Upstate NY",
+      "co2e_lb_per_mwh": 182.85,
+      "co2e_kg_per_kwh": 0.0830,
+      "grid_gross_loss_pct": 0.0482,
+      "states": ["NY"]
+    },
+    "PRMS": {
+      "name": "Puerto Rico Miscellaneous",
+      "co2e_lb_per_mwh": 1471.00,
+      "co2e_kg_per_kwh": 0.6673,
+      "grid_gross_loss_pct": 0.0600,
+      "states": ["PR"]
+    },
+    "RFCE": {
+      "name": "RFC East",
+      "co2e_lb_per_mwh": 595.28,
+      "co2e_kg_per_kwh": 0.2700,
+      "grid_gross_loss_pct": 0.0498,
+      "states": ["PA", "NJ", "DE", "MD", "DC"]
+    },
+    "RFCM": {
+      "name": "RFC Michigan",
+      "co2e_lb_per_mwh": 1068.92,
+      "co2e_kg_per_kwh": 0.4849,
+      "grid_gross_loss_pct": 0.0498,
+      "states": ["MI"]
+    },
+    "RFCW": {
+      "name": "RFC West",
+      "co2e_lb_per_mwh": 923.37,
+      "co2e_kg_per_kwh": 0.4189,
+      "grid_gross_loss_pct": 0.0498,
+      "states": ["OH", "IN", "WV", "KY"]
+    },
+    "RMPA": {
+      "name": "WECC Rockies",
+      "co2e_lb_per_mwh": 1023.42,
+      "co2e_kg_per_kwh": 0.4642,
+      "grid_gross_loss_pct": 0.0512,
+      "states": ["CO", "WY"]
+    },
+    "SPNO": {
+      "name": "SPP North",
+      "co2e_lb_per_mwh": 889.44,
+      "co2e_kg_per_kwh": 0.4034,
+      "grid_gross_loss_pct": 0.0541,
+      "states": ["KS", "NE", "OK"]
+    },
+    "SPSO": {
+      "name": "SPP South",
+      "co2e_lb_per_mwh": 822.75,
+      "co2e_kg_per_kwh": 0.3732,
+      "grid_gross_loss_pct": 0.0541,
+      "states": ["OK", "AR", "LA"]
+    },
+    "SRMV": {
+      "name": "SERC Mississippi Valley",
+      "co2e_lb_per_mwh": 592.42,
+      "co2e_kg_per_kwh": 0.2687,
+      "grid_gross_loss_pct": 0.0547,
+      "states": ["AR", "LA", "MS", "MO"]
+    },
+    "SRMW": {
+      "name": "SERC Midwest",
+      "co2e_lb_per_mwh": 1295.11,
+      "co2e_kg_per_kwh": 0.5874,
+      "grid_gross_loss_pct": 0.0547,
+      "states": ["MO", "IL"]
+    },
+    "SRSO": {
+      "name": "SERC South",
+      "co2e_lb_per_mwh": 857.54,
+      "co2e_kg_per_kwh": 0.3891,
+      "grid_gross_loss_pct": 0.0547,
+      "states": ["AL", "GA", "MS", "FL"]
+    },
+    "SRTV": {
+      "name": "SERC Tennessee Valley",
+      "co2e_lb_per_mwh": 679.41,
+      "co2e_kg_per_kwh": 0.3082,
+      "grid_gross_loss_pct": 0.0547,
+      "states": ["TN", "KY", "VA", "NC"]
+    },
+    "SRVC": {
+      "name": "SERC Virginia/Carolina",
+      "co2e_lb_per_mwh": 543.24,
+      "co2e_kg_per_kwh": 0.2464,
+      "grid_gross_loss_pct": 0.0547,
+      "states": ["VA", "NC", "SC"]
+    }
+  },
+  "stateToSubregion": {
+    "AL": "SRSO",
+    "AK": "AKGD",
+    "AZ": "AZNM",
+    "AR": "SRMV",
+    "CA": "CAMX",
+    "CO": "RMPA",
+    "CT": "NEWE",
+    "DE": "RFCE",
+    "DC": "RFCE",
+    "FL": "FRCC",
+    "GA": "SRSO",
+    "HI": "HIOA",
+    "ID": "NWPP",
+    "IL": "SRMW",
+    "IN": "RFCW",
+    "IA": "MROW",
+    "KS": "SPNO",
+    "KY": "SRTV",
+    "LA": "SRMV",
+    "ME": "NEWE",
+    "MD": "RFCE",
+    "MA": "NEWE",
+    "MI": "RFCM",
+    "MN": "MROW",
+    "MS": "SRSO",
+    "MO": "SRMW",
+    "MT": "MROW",
+    "NE": "MROW",
+    "NV": "NWPP",
+    "NH": "NEWE",
+    "NJ": "RFCE",
+    "NM": "AZNM",
+    "NY": "NYCW",
+    "NC": "SRVC",
+    "ND": "MROW",
+    "OH": "RFCW",
+    "OK": "SPNO",
+    "OR": "NWPP",
+    "PA": "RFCE",
+    "RI": "NEWE",
+    "SC": "SRVC",
+    "SD": "MROW",
+    "TN": "SRTV",
+    "TX": "ERCT",
+    "UT": "NWPP",
+    "VT": "NEWE",
+    "VA": "SRVC",
+    "WA": "NWPP",
+    "WV": "RFCW",
+    "WI": "MROE",
+    "WY": "RMPA"
+  },
+  "international_grid_factors": {
+    "US_national_average": {
+      "co2e_kg_per_kwh": 0.3716,
+      "source": "eGRID2023 US average"
+    },
+    "EU_average": {
+      "co2e_kg_per_kwh": 0.2307,
+      "source": "EEA 2023"
+    },
+    "UK": {
+      "co2e_kg_per_kwh": 0.1278,
+      "source": "DEFRA/DESNZ 2025"
+    },
+    "China": {
+      "co2e_kg_per_kwh": 0.5810,
+      "source": "IEA 2023"
+    },
+    "India": {
+      "co2e_kg_per_kwh": 0.7080,
+      "source": "CEA 2023"
+    },
+    "Germany": {
+      "co2e_kg_per_kwh": 0.3500,
+      "source": "UBA 2023"
+    },
+    "France": {
+      "co2e_kg_per_kwh": 0.0520,
+      "source": "RTE 2023 (nuclear-dominated)"
+    },
+    "Japan": {
+      "co2e_kg_per_kwh": 0.4570,
+      "source": "MOE 2023"
+    },
+    "Canada": {
+      "co2e_kg_per_kwh": 0.1200,
+      "source": "NIR 2023"
+    },
+    "Australia": {
+      "co2e_kg_per_kwh": 0.6560,
+      "source": "NGER 2023"
+    },
+    "Brazil": {
+      "co2e_kg_per_kwh": 0.0740,
+      "source": "MCTIC 2023 (hydro-dominated)"
+    }
+  }
+}

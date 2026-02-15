@@ -1,0 +1,147 @@
+{
+  "source": "ipcc_ar6",
+  "assessmentReport": 6,
+  "timeHorizon": 100,
+  "referenceTable": "IPCC AR6 WG1 Chapter 7, Table 7.SM.7",
+  "citation": "Forster, P., et al. (2021). The Earth's Energy Budget, Climate Feedbacks, and Climate Sensitivity. In: Climate Change 2021: The Physical Science Basis.",
+  "note": "GWP-100 values relative to CO2 = 1. These supersede AR5 values for new reporting.",
+  "gases": {
+    "CO2": {
+      "gwp100": 1,
+      "lifetime_years": null,
+      "formula": "CO2"
+    },
+    "CH4": {
+      "gwp100": 27.9,
+      "lifetime_years": 11.8,
+      "formula": "CH4",
+      "note": "Non-fossil (biogenic) methane"
+    },
+    "CH4_fossil": {
+      "gwp100": 29.8,
+      "lifetime_years": 11.8,
+      "formula": "CH4",
+      "note": "Fossil methane — includes climate-carbon feedback from oxidation to CO2"
+    },
+    "N2O": {
+      "gwp100": 273,
+      "lifetime_years": 109,
+      "formula": "N2O"
+    },
+    "SF6": {
+      "gwp100": 25200,
+      "lifetime_years": 3200,
+      "formula": "SF6"
+    },
+    "NF3": {
+      "gwp100": 17400,
+      "lifetime_years": 569,
+      "formula": "NF3"
+    },
+    "HFC-23": {
+      "gwp100": 14600,
+      "lifetime_years": 228,
+      "formula": "CHF3"
+    },
+    "HFC-32": {
+      "gwp100": 771,
+      "lifetime_years": 5.4,
+      "formula": "CH2F2",
+      "common_name": "R-32"
+    },
+    "HFC-125": {
+      "gwp100": 3740,
+      "lifetime_years": 30,
+      "formula": "CHF2CF3"
+    },
+    "HFC-134a": {
+      "gwp100": 1526,
+      "lifetime_years": 14.0,
+      "formula": "CH2FCF3",
+      "common_name": "R-134a"
+    },
+    "HFC-143a": {
+      "gwp100": 5810,
+      "lifetime_years": 51,
+      "formula": "CH3CF3"
+    },
+    "HFC-152a": {
+      "gwp100": 164,
+      "lifetime_years": 1.6,
+      "formula": "CH3CHF2"
+    },
+    "HFC-227ea": {
+      "gwp100": 3600,
+      "lifetime_years": 36,
+      "formula": "CF3CHFCF3"
+    },
+    "HFC-236fa": {
+      "gwp100": 8690,
+      "lifetime_years": 213,
+      "formula": "CF3CH2CF3"
+    },
+    "HFC-245fa": {
+      "gwp100": 962,
+      "lifetime_years": 7.9,
+      "formula": "CHF2CH2CF3"
+    },
+    "HCFC-22": {
+      "gwp100": 1960,
+      "lifetime_years": 11.9,
+      "formula": "CHClF2",
+      "common_name": "R-22",
+      "note": "ODS being phased out but still common in older equipment"
+    },
+    "HCFC-141b": {
+      "gwp100": 860,
+      "lifetime_years": 9.4,
+      "formula": "CH3CCl2F"
+    },
+    "HCFC-142b": {
+      "gwp100": 2070,
+      "lifetime_years": 18,
+      "formula": "CH3CClF2"
+    },
+    "R-404A": {
+      "gwp100": 4728,
+      "blend": true,
+      "components": ["HFC-125 (44%)", "HFC-143a (52%)", "HFC-134a (4%)"],
+      "common_use": "Commercial refrigeration"
+    },
+    "R-407C": {
+      "gwp100": 1924,
+      "blend": true,
+      "components": ["HFC-32 (23%)", "HFC-125 (25%)", "HFC-134a (52%)"],
+      "common_use": "Air conditioning (R-22 replacement)"
+    },
+    "R-410A": {
+      "gwp100": 2088,
+      "blend": true,
+      "components": ["HFC-32 (50%)", "HFC-125 (50%)"],
+      "common_use": "Residential and commercial air conditioning"
+    },
+    "R-507A": {
+      "gwp100": 3985,
+      "blend": true,
+      "components": ["HFC-125 (50%)", "HFC-143a (50%)"],
+      "common_use": "Commercial refrigeration"
+    },
+    "R-448A": {
+      "gwp100": 1387,
+      "blend": true,
+      "components": ["HFC-32 (26%)", "HFC-125 (26%)", "HFC-134a (21%)", "HFO-1234yf (20%)", "HFO-1234ze(E) (7%)"],
+      "common_use": "Medium temperature commercial refrigeration"
+    }
+  },
+  "default_leak_rates_by_equipment": {
+    "chiller_centrifugal": 0.02,
+    "chiller_reciprocating": 0.05,
+    "split_system": 0.04,
+    "rooftop_unit": 0.10,
+    "window_unit": 0.10,
+    "commercial_refrigeration": 0.15,
+    "industrial_refrigeration": 0.10,
+    "transport_refrigeration": 0.25,
+    "note": "Annual leak rates as fraction of total charge. Source: EPA Vintaging Model defaults"
+  }
+}

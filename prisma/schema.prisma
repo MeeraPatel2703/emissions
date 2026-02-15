@@ -1,0 +1,223 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ═══════════════════════════════════════════════════
+// FACILITY & INPUTS
+// ═══════════════════════════════════════════════════
+
+model Facility {
+  id             String   @id @default(cuid())
+  name           String
+  buildingType   String   // office, warehouse, manufacturing, data_center, hospital, retail, education
+  squareFeet     Float
+  yearBuilt      Int?
+  address        String?
+  city           String?
+  state          String?
+  zipCode        String?
+  country        String   @default("US")
+  climateZone    String?  // ASHRAE zone (e.g., "4A")
+  egridSubregion String?  // eGRID subregion code (e.g., "SRSO")
+  latitude       Float?
+  longitude      Float?
+  inputMode      String   @default("basic") // basic, advanced, expert
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  energyInputs    EnergyInput[]
+  refrigerants    RefrigerantInput[]
+  fleetVehicles   FleetVehicle[]
+  wasteStreams    WasteStream[]
+  waterUsage      WaterUsage[]
+  scope3Inputs    Scope3Input[]
+  buildingPhysics BuildingPhysics?
+  results         CalculationResult[]
+  scenarios       Scenario[]
+}
+
+model EnergyInput {
+  id          String   @id @default(cuid())
+  facilityId  String
+  facility    Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  fuelType    String   // electricity, natural_gas, diesel, fuel_oil_2, fuel_oil_6, propane, kerosene
+  quantity    Float
+  unit        String   // kWh, therms, ccf, MMBtu, gallons, liters
+  period      String   // annual, monthly
+  month       Int?     // 1-12 if monthly
+  dataQuality String   @default("estimated") // measured, estimated, modeled
+  isRenewable Boolean  @default(false)
+  supplierEF  Float?   // supplier-specific emission factor if available
+  createdAt   DateTime @default(now())
+}
+
+model RefrigerantInput {
+  id              String   @id @default(cuid())
+  facilityId      String
+  facility        Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  refrigerantType String   // R-410A, R-134a, R-32, R-22, R-404A, R-407C, etc.
+  chargeAmount    Float    // kg
+  annualLeakRate  Float    // fraction (e.g., 0.05 for 5%)
+  equipmentType   String?  // chiller, split_system, rooftop_unit, refrigeration
+  dataQuality     String   @default("estimated")
+  createdAt       DateTime @default(now())
+}
+
+model FleetVehicle {
+  id             String   @id @default(cuid())
+  facilityId     String
+  facility       Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  vehicleType    String   // passenger_car, light_truck, medium_truck, heavy_truck
+  fuelType       String   // gasoline, diesel, ev, hybrid
+  count          Int
+  annualMiles    Float    // per vehicle
+  fuelEfficiency Float?   // mpg (if known)
+  dataQuality    String   @default("estimated")
+  createdAt      DateTime @default(now())
+}
+
+model WasteStream {
+  id             String   @id @default(cuid())
+  facilityId     String
+  facility       Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  wasteType      String   // mixed_msw, paper, cardboard, plastic, food, construction, hazardous
+  disposalMethod String   // landfill, recycled, composted, incinerated, anaerobic_digestion
+  annualTonnes   Float
+  dataQuality    String   @default("estimated")
+  createdAt      DateTime @default(now())
+}
+
+model WaterUsage {
+  id            String   @id @default(cuid())
+  facilityId    String
+  facility      Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  source        String   // municipal, groundwell, surface, recycled
+  annualGallons Float
+  treatmentType String?  // primary, secondary, tertiary
+  dataQuality   String   @default("estimated")
+  createdAt     DateTime @default(now())
+}
+
+model Scope3Input {
+  id          String   @id @default(cuid())
+  facilityId  String
+  facility    Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  category    Int      // 1-15 (GHG Protocol Scope 3 category number)
+  subcategory String?  // e.g., "air_travel", "rail_travel" within cat 6
+  method      String   // spend_based, distance_based, quantity_based, average_data
+  value       Float
+  unit        String   // USD, km, passenger-km, tonnes, etc.
+  description String?
+  dataQuality String   @default("estimated")
+  createdAt   DateTime @default(now())
+}
+
+model BuildingPhysics {
+  id                String   @id @default(cuid())
+  facilityId        String   @unique
+  facility          Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  wallUValue        Float?   // W/(m2*K)
+  roofUValue        Float?
+  windowUValue      Float?
+  windowToWallRatio Float?   // 0-1
+  infiltrationRate  Float?   // ACH
+  hvacType          String?  // central_air, split, heat_pump, boiler_chiller
+  hvacEfficiency    Float?   // COP or AFUE
+  lightingDensity   Float?   // W/sqft
+  occupantDensity   Float?   // persons/sqft
+  operatingHours    Float?   // hours/week
+  hddBase65         Float?
+  cddBase65         Float?
+  createdAt         DateTime @default(now())
+}
+
+// ═══════════════════════════════════════════════════
+// CALCULATION RESULTS
+// ═══════════════════════════════════════════════════
+
+model CalculationResult {
+  id                  String   @id @default(cuid())
+  facilityId          String
+  facility            Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  totalEmissions      Float    // tCO2e
+  scope1Total         Float
+  scope2LocationTotal Float
+  scope2MarketTotal   Float
+  scope3Total         Float
+  emissionsPerSqft    Float
+  emissionsPerEmployee Float?
+  breakdown           Json     // Full ScopeBreakdown object
+  methodology         Json     // MethodologyRecord
+  uncertainty         Json     // UncertaintyResult
+  monteCarloSummary   Json?    // MonteCarloSummary
+  inputSnapshot       Json     // Complete input snapshot for reproducibility
+  factorSetVersion    String   // e.g., "epa-2025_egrid-2023_defra-2025_ar6"
+  calculationVersion  String   // engine version string
+  createdAt           DateTime @default(now())
+
+  @@index([facilityId, createdAt])
+}
+
+// ═══════════════════════════════════════════════════
+// EMISSION FACTORS (versioned)
+// ═══════════════════════════════════════════════════
+
+model EmissionFactor {
+  id            String    @id @default(cuid())
+  source        String    // epa_hub, egrid, defra, ipcc_ar6, cbecs
+  version       String    // "2025", "2023", "ar6"
+  category      String    // stationary_combustion, grid_electricity, gwp, etc.
+  subcategory   String    // natural_gas, diesel, SRSO, R-410A, etc.
+  value         Float
+  unit          String    // kg_CO2_per_mmbtu, kg_CO2e_per_kWh, gwp_100, etc.
+  region        String?   // US, UK, SRSO, CAMX, etc.
+  metadata      Json?
+  effectiveDate DateTime?
+  retiredDate   DateTime?
+  createdAt     DateTime  @default(now())
+
+  @@unique([source, version, category, subcategory, region])
+  @@index([source, version])
+  @@index([category, subcategory])
+}
+
+model Benchmark {
+  id           String   @id @default(cuid())
+  source       String   // cbecs_2018, energystar, custom
+  buildingType String
+  metric       String   // eui_kbtu_sqft, electricity_kwh_sqft, gas_therms_sqft
+  value        Float    // median
+  p25          Float?
+  p75          Float?
+  region       String?
+  climateZone  String?
+  sampleSize   Int?
+  year         Int
+  createdAt    DateTime @default(now())
+
+  @@unique([source, buildingType, metric, region, climateZone, year])
+}
+
+// ═══════════════════════════════════════════════════
+// SCENARIOS
+// ═══════════════════════════════════════════════════
+
+model Scenario {
+  id                   String   @id @default(cuid())
+  facilityId           String
+  facility             Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  name                 String
+  description          String?
+  interventions        Json     // Array of Intervention objects
+  financials           Json?    // FinancialSummary
+  projectedEmissions   Json?    // 10-year emissions trajectory
+  carbonPriceScenario  String?  // low, medium, high, custom
+  carbonPricePerTon    Float?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}

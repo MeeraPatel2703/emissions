@@ -1,0 +1,99 @@
+{
+  "source": "epa_useeio_v2",
+  "version": "2.0",
+  "citation": "U.S. EPA, US Environmentally-Extended Input-Output (USEEIO) Model v2.0",
+  "note": "Spend-based emission factors for Scope 3 Categories 1 and 2. Values in kg CO2e per USD of spend (2021 USD).",
+  "unit": "kg_co2e_per_usd",
+  "sectors": {
+    "professional_services": {
+      "factor": 0.12,
+      "naics_examples": ["5411 Legal", "5412 Accounting", "5416 Management Consulting"],
+      "data_quality": "medium"
+    },
+    "information_technology": {
+      "factor": 0.15,
+      "naics_examples": ["5112 Software", "5182 Data Processing", "5415 Computer Systems"],
+      "data_quality": "medium"
+    },
+    "office_supplies": {
+      "factor": 0.38,
+      "naics_examples": ["4532 Office Supplies", "3222 Paper Products"],
+      "data_quality": "medium"
+    },
+    "food_and_beverage": {
+      "factor": 0.52,
+      "naics_examples": ["3111-3119 Food Manufacturing", "7225 Restaurants"],
+      "data_quality": "medium"
+    },
+    "construction": {
+      "factor": 0.45,
+      "naics_examples": ["2361-2389 Construction"],
+      "data_quality": "low"
+    },
+    "chemicals": {
+      "factor": 0.68,
+      "naics_examples": ["3251-3259 Chemical Manufacturing"],
+      "data_quality": "low"
+    },
+    "metals_primary": {
+      "factor": 0.72,
+      "naics_examples": ["3311-3315 Primary Metals"],
+      "data_quality": "low"
+    },
+    "paper_products": {
+      "factor": 0.41,
+      "naics_examples": ["3221-3222 Pulp, Paper, Paperboard"],
+      "data_quality": "medium"
+    },
+    "transportation_services": {
+      "factor": 0.55,
+      "naics_examples": ["4811-4885 Transportation"],
+      "data_quality": "medium"
+    },
+    "utilities": {
+      "factor": 0.89,
+      "naics_examples": ["2211 Electric Power", "2212 Natural Gas"],
+      "data_quality": "low"
+    },
+    "textiles": {
+      "factor": 0.34,
+      "naics_examples": ["3131-3159 Textile and Apparel"],
+      "data_quality": "low"
+    },
+    "machinery": {
+      "factor": 0.29,
+      "naics_examples": ["3331-3339 Machinery Manufacturing"],
+      "data_quality": "medium"
+    },
+    "electrical_equipment": {
+      "factor": 0.25,
+      "naics_examples": ["3341-3346 Computer and Electronic Products"],
+      "data_quality": "medium"
+    },
+    "medical_equipment": {
+      "factor": 0.22,
+      "naics_examples": ["3391 Medical Equipment", "3254 Pharmaceuticals"],
+      "data_quality": "low"
+    },
+    "cleaning_products": {
+      "factor": 0.45,
+      "naics_examples": ["3256 Soap and Cleaning Compounds"],
+      "data_quality": "low"
+    },
+    "furniture": {
+      "factor": 0.31,
+      "naics_examples": ["3371 Household Furniture", "3372 Office Furniture"],
+      "data_quality": "medium"
+    },
+    "insurance_financial": {
+      "factor": 0.06,
+      "naics_examples": ["5231-5239 Securities", "5241-5242 Insurance"],
+      "data_quality": "medium"
+    },
+    "real_estate": {
+      "factor": 0.08,
+      "naics_examples": ["5311 Lessors of Real Estate"],
+      "data_quality": "low"
+    }
+  }
+}

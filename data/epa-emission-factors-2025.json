@@ -1,0 +1,178 @@
+{
+  "source": "epa_ghg_emission_factors_hub",
+  "version": "2025",
+  "publishDate": "2025-03",
+  "citation": "U.S. EPA, GHG Emission Factors Hub, March 2025",
+  "tables": {
+    "table1_stationary_combustion": {
+      "natural_gas": {
+        "co2_kg_per_mmbtu": 53.06,
+        "ch4_g_per_mmbtu": 1.0,
+        "n2o_g_per_mmbtu": 0.1,
+        "heat_content_mmbtu_per_therm": 0.1,
+        "heat_content_mmbtu_per_ccf": 0.1036,
+        "heat_content_mmbtu_per_scf": 0.001036,
+        "note": "EPA Table 1 - CO2 from fossil fuel combustion"
+      },
+      "diesel_no2": {
+        "co2_kg_per_gallon": 10.21,
+        "ch4_g_per_gallon": 0.40,
+        "n2o_g_per_gallon": 0.08,
+        "heat_content_mmbtu_per_gallon": 0.1387
+      },
+      "residual_fuel_oil_no6": {
+        "co2_kg_per_gallon": 11.27,
+        "ch4_g_per_gallon": 0.64,
+        "n2o_g_per_gallon": 0.13,
+        "heat_content_mmbtu_per_gallon": 0.1500
+      },
+      "propane": {
+        "co2_kg_per_gallon": 5.72,
+        "ch4_g_per_gallon": 0.24,
+        "n2o_g_per_gallon": 0.05,
+        "heat_content_mmbtu_per_gallon": 0.09154
+      },
+      "kerosene": {
+        "co2_kg_per_gallon": 10.15,
+        "ch4_g_per_gallon": 0.40,
+        "n2o_g_per_gallon": 0.08,
+        "heat_content_mmbtu_per_gallon": 0.1350
+      }
+    },
+    "table2_mobile_combustion_co2": {
+      "gasoline": {
+        "co2_kg_per_gallon": 8.78
+      },
+      "diesel": {
+        "co2_kg_per_gallon": 10.21
+      }
+    },
+    "table3_mobile_combustion_ch4_n2o": {
+      "passenger_car": {
+        "gasoline": {
+          "ch4_g_per_mile": 0.0105,
+          "n2o_g_per_mile": 0.0079
+        },
+        "diesel": {
+          "ch4_g_per_mile": 0.0005,
+          "n2o_g_per_mile": 0.0010
+        }
+      },
+      "light_truck": {
+        "gasoline": {
+          "ch4_g_per_mile": 0.0143,
+          "n2o_g_per_mile": 0.0113
+        },
+        "diesel": {
+          "ch4_g_per_mile": 0.0005,
+          "n2o_g_per_mile": 0.0010
+        }
+      },
+      "medium_truck": {
+        "gasoline": {
+          "ch4_g_per_mile": 0.0175,
+          "n2o_g_per_mile": 0.0127
+        },
+        "diesel": {
+          "ch4_g_per_mile": 0.0051,
+          "n2o_g_per_mile": 0.0048
+        }
+      },
+      "heavy_truck": {
+        "diesel": {
+          "ch4_g_per_mile": 0.0051,
+          "n2o_g_per_mile": 0.0048
+        }
+      }
+    },
+    "table4_default_fuel_economy_mpg": {
+      "passenger_car": { "gasoline": 25.4, "diesel": 35.0 },
+      "light_truck": { "gasoline": 17.5, "diesel": 22.0 },
+      "medium_truck": { "gasoline": 8.0, "diesel": 8.0 },
+      "heavy_truck": { "diesel": 5.8 }
+    },
+    "table8_upstream_fuel_and_energy": {
+      "natural_gas_wtt_kg_co2e_per_mmbtu": 10.62,
+      "diesel_wtt_kg_co2e_per_gallon": 2.69,
+      "gasoline_wtt_kg_co2e_per_gallon": 2.30,
+      "electricity_tnd_loss_pct": 0.05,
+      "note": "Well-to-tank and transmission/distribution losses for Scope 3 Cat 3"
+    },
+    "table9_business_travel": {
+      "air_short_haul_under_300mi": {
+        "kg_co2e_per_passenger_mile": 0.248,
+        "note": "Short-haul includes taxi, takeoff, and landing fuel intensity"
+      },
+      "air_medium_haul_300_2300mi": {
+        "kg_co2e_per_passenger_mile": 0.137
+      },
+      "air_long_haul_over_2300mi": {
+        "kg_co2e_per_passenger_mile": 0.118
+      },
+      "rail_intercity": {
+        "kg_co2e_per_passenger_mile": 0.098
+      },
+      "rail_commuter": {
+        "kg_co2e_per_passenger_mile": 0.064
+      },
+      "bus_intercity": {
+        "kg_co2e_per_passenger_mile": 0.036
+      }
+    },
+    "table10_product_transport": {
+      "truck_medium_heavy": {
+        "kg_co2e_per_ton_mile": 0.1616
+      },
+      "rail": {
+        "kg_co2e_per_ton_mile": 0.0223
+      },
+      "waterborne_cargo": {
+        "kg_co2e_per_ton_mile": 0.0401
+      },
+      "air_freight": {
+        "kg_co2e_per_ton_mile": 1.136
+      }
+    },
+    "table11_employee_commuting": {
+      "passenger_car": {
+        "kg_co2e_per_vehicle_mile": 0.347
+      },
+      "bus_transit": {
+        "kg_co2e_per_passenger_mile": 0.064
+      },
+      "rail_light_transit": {
+        "kg_co2e_per_passenger_mile": 0.044
+      },
+      "rail_heavy_subway": {
+        "kg_co2e_per_passenger_mile": 0.036
+      },
+      "telecommute": {
+        "kg_co2e_per_day": 0,
+        "note": "Zero attributed; home energy use typically excluded from Scope 3 Cat 7"
+      }
+    },
+    "table12_waste_disposal": {
+      "mixed_msw_landfill": {
+        "tco2e_per_short_ton": 0.52
+      },
+      "mixed_msw_recycled": {
+        "tco2e_per_short_ton": -0.11,
+        "note": "Negative = avoided emissions from recycling vs virgin production"
+      },
+      "mixed_msw_composted": {
+        "tco2e_per_short_ton": 0.04
+      },
+      "mixed_msw_incinerated": {
+        "tco2e_per_short_ton": 0.04
+      },
+      "paper_landfill": { "tco2e_per_short_ton": 1.53 },
+      "paper_recycled": { "tco2e_per_short_ton": -3.55 },
+      "cardboard_landfill": { "tco2e_per_short_ton": 0.80 },
+      "cardboard_recycled": { "tco2e_per_short_ton": -3.12 },
+      "food_landfill": { "tco2e_per_short_ton": 0.56 },
+      "food_composted": { "tco2e_per_short_ton": 0.04 },
+      "plastic_landfill": { "tco2e_per_short_ton": 0.04 },
+      "plastic_recycled": { "tco2e_per_short_ton": -1.40 }
+    }
+  }
+}

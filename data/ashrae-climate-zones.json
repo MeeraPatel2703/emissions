@@ -1,0 +1,141 @@
+{
+  "source": "ashrae_169_2020",
+  "citation": "ASHRAE Standard 169-2020: Climatic Data for Building Design Standards",
+  "baseTemp_F": 65,
+  "referenceZone": "4A",
+  "note": "CBECS national averages approximate zone 4A. Climate adjustment = (zoneHDD + zoneCDD) / (refHDD + refCDD)",
+  "zones": {
+    "1A": {
+      "description": "Very Hot-Humid",
+      "hdd65": 200,
+      "cdd65": 5000,
+      "representative_cities": ["Miami, FL", "Key West, FL"],
+      "heating_multiplier": 0.05,
+      "cooling_multiplier": 2.50
+    },
+    "2A": {
+      "description": "Hot-Humid",
+      "hdd65": 1500,
+      "cdd65": 3500,
+      "representative_cities": ["Houston, TX", "New Orleans, LA", "Jacksonville, FL"],
+      "heating_multiplier": 0.38,
+      "cooling_multiplier": 1.75
+    },
+    "2B": {
+      "description": "Hot-Dry",
+      "hdd65": 1200,
+      "cdd65": 3800,
+      "representative_cities": ["Phoenix, AZ", "Tucson, AZ"],
+      "heating_multiplier": 0.30,
+      "cooling_multiplier": 1.90
+    },
+    "3A": {
+      "description": "Warm-Humid",
+      "hdd65": 2500,
+      "cdd65": 2200,
+      "representative_cities": ["Atlanta, GA", "Memphis, TN", "Dallas, TX", "Charlotte, NC"],
+      "heating_multiplier": 0.63,
+      "cooling_multiplier": 1.10
+    },
+    "3B": {
+      "description": "Warm-Dry",
+      "hdd65": 2000,
+      "cdd65": 2500,
+      "representative_cities": ["Los Angeles, CA", "Las Vegas, NV", "El Paso, TX"],
+      "heating_multiplier": 0.50,
+      "cooling_multiplier": 1.25
+    },
+    "3C": {
+      "description": "Warm-Marine",
+      "hdd65": 2800,
+      "cdd65": 200,
+      "representative_cities": ["San Francisco, CA", "Santa Barbara, CA"],
+      "heating_multiplier": 0.70,
+      "cooling_multiplier": 0.10
+    },
+    "4A": {
+      "description": "Mixed-Humid",
+      "hdd65": 4000,
+      "cdd65": 1200,
+      "representative_cities": ["Washington, DC", "New York, NY", "Philadelphia, PA", "St. Louis, MO"],
+      "heating_multiplier": 1.00,
+      "cooling_multiplier": 1.00
+    },
+    "4B": {
+      "description": "Mixed-Dry",
+      "hdd65": 3800,
+      "cdd65": 1400,
+      "representative_cities": ["Albuquerque, NM"],
+      "heating_multiplier": 0.95,
+      "cooling_multiplier": 1.17
+    },
+    "4C": {
+      "description": "Mixed-Marine",
+      "hdd65": 4200,
+      "cdd65": 300,
+      "representative_cities": ["Seattle, WA", "Portland, OR"],
+      "heating_multiplier": 1.05,
+      "cooling_multiplier": 0.25
+    },
+    "5A": {
+      "description": "Cool-Humid",
+      "hdd65": 5500,
+      "cdd65": 800,
+      "representative_cities": ["Chicago, IL", "Boston, MA", "Detroit, MI", "Columbus, OH"],
+      "heating_multiplier": 1.38,
+      "cooling_multiplier": 0.67
+    },
+    "5B": {
+      "description": "Cool-Dry",
+      "hdd65": 5500,
+      "cdd65": 600,
+      "representative_cities": ["Denver, CO", "Boise, ID", "Salt Lake City, UT"],
+      "heating_multiplier": 1.38,
+      "cooling_multiplier": 0.50
+    },
+    "6A": {
+      "description": "Cold-Humid",
+      "hdd65": 7000,
+      "cdd65": 400,
+      "representative_cities": ["Minneapolis, MN", "Milwaukee, WI", "Burlington, VT"],
+      "heating_multiplier": 1.75,
+      "cooling_multiplier": 0.33
+    },
+    "6B": {
+      "description": "Cold-Dry",
+      "hdd65": 7500,
+      "cdd65": 300,
+      "representative_cities": ["Helena, MT", "Casper, WY"],
+      "heating_multiplier": 1.88,
+      "cooling_multiplier": 0.25
+    },
+    "7": {
+      "description": "Very Cold",
+      "hdd65": 9000,
+      "cdd65": 200,
+      "representative_cities": ["Duluth, MN", "Fairbanks, AK"],
+      "heating_multiplier": 2.25,
+      "cooling_multiplier": 0.17
+    },
+    "8": {
+      "description": "Subarctic/Arctic",
+      "hdd65": 13000,
+      "cdd65": 50,
+      "representative_cities": ["Barrow, AK"],
+      "heating_multiplier": 3.25,
+      "cooling_multiplier": 0.04
+    }
+  },
+  "stateToDefaultZone": {
+    "AL": "3A", "AK": "7", "AZ": "2B", "AR": "3A", "CA": "3B",
+    "CO": "5B", "CT": "5A", "DE": "4A", "DC": "4A", "FL": "2A",
+    "GA": "3A", "HI": "1A", "ID": "5B", "IL": "5A", "IN": "5A",
+    "IA": "5A", "KS": "4A", "KY": "4A", "LA": "2A", "ME": "6A",
+    "MD": "4A", "MA": "5A", "MI": "5A", "MN": "6A", "MS": "3A",
+    "MO": "4A", "MT": "6B", "NE": "5A", "NV": "3B", "NH": "6A",
+    "NJ": "4A", "NM": "4B", "NY": "5A", "NC": "4A", "ND": "6A",
+    "OH": "5A", "OK": "3A", "OR": "4C", "PA": "5A", "RI": "5A",
+    "SC": "3A", "SD": "6A", "TN": "4A", "TX": "2A", "UT": "5B",
+    "VT": "6A", "VA": "4A", "WA": "4C", "WV": "4A", "WI": "6A", "WY": "6B"
+  }
+}

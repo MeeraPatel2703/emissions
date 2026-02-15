@@ -1,0 +1,37 @@
+{
+  "source": "eia_aeo_2025",
+  "citation": "U.S. EIA, Annual Energy Outlook 2025, Reference Case",
+  "scenario": "reference",
+  "note": "Projected US national average grid emission factor trajectory. Decline driven by coal retirements and renewable capacity additions.",
+  "unit": "kg_co2e_per_kwh",
+  "national_grid_ef": {
+    "2023": 0.3716,
+    "2024": 0.3580,
+    "2025": 0.3450,
+    "2026": 0.3310,
+    "2027": 0.3180,
+    "2028": 0.3050,
+    "2029": 0.2920,
+    "2030": 0.2800,
+    "2031": 0.2680,
+    "2032": 0.2560,
+    "2033": 0.2450,
+    "2034": 0.2340,
+    "2035": 0.2240
+  },
+  "annual_decline_rate_pct": 3.9,
+  "scenarios": {
+    "reference": {
+      "2030_ef": 0.2800,
+      "description": "Reference case based on current policies and market trends"
+    },
+    "high_renewables": {
+      "2030_ef": 0.2200,
+      "description": "Accelerated renewable deployment scenario (IRA incentives extended)"
+    },
+    "low_renewables": {
+      "2030_ef": 0.3200,
+      "description": "Slower transition scenario (policy uncertainty, grid constraints)"
+    }
+  }
+}

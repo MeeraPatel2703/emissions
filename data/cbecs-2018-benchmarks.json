@@ -1,0 +1,134 @@
+{
+  "source": "cbecs_2018",
+  "dataYear": 2018,
+  "citation": "U.S. EIA, Commercial Buildings Energy Consumption Survey (CBECS) 2018; EnergyStar Portfolio Manager Technical Reference",
+  "note": "EUI = Energy Use Intensity. Values in source energy kBtu/sqft unless otherwise noted.",
+  "buildingTypes": {
+    "office": {
+      "eui_kbtu_sqft": { "median": 78.5, "p25": 52.0, "p75": 118.0 },
+      "electricity_kwh_sqft": { "median": 14.6, "p25": 9.5, "p75": 22.0 },
+      "natural_gas_therms_sqft": { "median": 0.18, "p25": 0.05, "p75": 0.35 },
+      "fuel_split": {
+        "electricity_pct": 0.66,
+        "natural_gas_pct": 0.30,
+        "other_pct": 0.04
+      },
+      "typical_occupant_density_sqft_per_person": 200,
+      "typical_operating_hours_per_week": 60,
+      "benchmark_kg_co2e_per_sqft": { "median": 7.8, "p25": 5.2, "p75": 11.8 },
+      "benchmark_kg_co2e_per_employee": { "median": 2450, "p25": 1500, "p75": 3800 }
+    },
+    "warehouse": {
+      "eui_kbtu_sqft": { "median": 34.6, "p25": 18.0, "p75": 62.0 },
+      "electricity_kwh_sqft": { "median": 6.2, "p25": 3.0, "p75": 11.0 },
+      "natural_gas_therms_sqft": { "median": 0.08, "p25": 0.01, "p75": 0.20 },
+      "fuel_split": {
+        "electricity_pct": 0.52,
+        "natural_gas_pct": 0.42,
+        "other_pct": 0.06
+      },
+      "typical_occupant_density_sqft_per_person": 2500,
+      "typical_operating_hours_per_week": 60,
+      "benchmark_kg_co2e_per_sqft": { "median": 3.5, "p25": 1.8, "p75": 6.2 },
+      "benchmark_kg_co2e_per_employee": { "median": 8750, "p25": 4500, "p75": 15500 }
+    },
+    "manufacturing": {
+      "eui_kbtu_sqft": { "median": 95.0, "p25": 50.0, "p75": 180.0 },
+      "electricity_kwh_sqft": { "median": 18.0, "p25": 9.0, "p75": 35.0 },
+      "natural_gas_therms_sqft": { "median": 0.25, "p25": 0.08, "p75": 0.55 },
+      "fuel_split": {
+        "electricity_pct": 0.55,
+        "natural_gas_pct": 0.38,
+        "other_pct": 0.07
+      },
+      "typical_occupant_density_sqft_per_person": 500,
+      "typical_operating_hours_per_week": 80,
+      "benchmark_kg_co2e_per_sqft": { "median": 12.5, "p25": 6.0, "p75": 25.0 },
+      "benchmark_kg_co2e_per_employee": { "median": 6250, "p25": 3000, "p75": 12500 }
+    },
+    "data_center": {
+      "eui_kbtu_sqft": { "median": 452.0, "p25": 280.0, "p75": 650.0 },
+      "electricity_kwh_sqft": { "median": 130.0, "p25": 80.0, "p75": 190.0 },
+      "natural_gas_therms_sqft": { "median": 0.05, "p25": 0.0, "p75": 0.15 },
+      "fuel_split": {
+        "electricity_pct": 0.95,
+        "natural_gas_pct": 0.04,
+        "other_pct": 0.01
+      },
+      "typical_occupant_density_sqft_per_person": 1000,
+      "typical_operating_hours_per_week": 168,
+      "benchmark_kg_co2e_per_sqft": { "median": 55.0, "p25": 35.0, "p75": 80.0 },
+      "benchmark_kg_co2e_per_employee": { "median": 55000, "p25": 35000, "p75": 80000 }
+    },
+    "hospital": {
+      "eui_kbtu_sqft": { "median": 199.4, "p25": 140.0, "p75": 280.0 },
+      "electricity_kwh_sqft": { "median": 28.5, "p25": 20.0, "p75": 40.0 },
+      "natural_gas_therms_sqft": { "median": 0.55, "p25": 0.30, "p75": 0.85 },
+      "fuel_split": {
+        "electricity_pct": 0.48,
+        "natural_gas_pct": 0.46,
+        "other_pct": 0.06
+      },
+      "typical_occupant_density_sqft_per_person": 400,
+      "typical_operating_hours_per_week": 168,
+      "benchmark_kg_co2e_per_sqft": { "median": 22.0, "p25": 15.0, "p75": 32.0 },
+      "benchmark_kg_co2e_per_employee": { "median": 8800, "p25": 6000, "p75": 12800 }
+    },
+    "retail": {
+      "eui_kbtu_sqft": { "median": 55.3, "p25": 35.0, "p75": 85.0 },
+      "electricity_kwh_sqft": { "median": 12.0, "p25": 7.5, "p75": 18.0 },
+      "natural_gas_therms_sqft": { "median": 0.10, "p25": 0.02, "p75": 0.22 },
+      "fuel_split": {
+        "electricity_pct": 0.70,
+        "natural_gas_pct": 0.25,
+        "other_pct": 0.05
+      },
+      "typical_occupant_density_sqft_per_person": 500,
+      "typical_operating_hours_per_week": 70,
+      "benchmark_kg_co2e_per_sqft": { "median": 5.5, "p25": 3.5, "p75": 8.5 },
+      "benchmark_kg_co2e_per_employee": { "median": 2750, "p25": 1750, "p75": 4250 }
+    },
+    "education": {
+      "eui_kbtu_sqft": { "median": 63.1, "p25": 40.0, "p75": 95.0 },
+      "electricity_kwh_sqft": { "median": 10.5, "p25": 6.5, "p75": 16.0 },
+      "natural_gas_therms_sqft": { "median": 0.20, "p25": 0.08, "p75": 0.35 },
+      "fuel_split": {
+        "electricity_pct": 0.55,
+        "natural_gas_pct": 0.40,
+        "other_pct": 0.05
+      },
+      "typical_occupant_density_sqft_per_person": 150,
+      "typical_operating_hours_per_week": 50,
+      "benchmark_kg_co2e_per_sqft": { "median": 6.3, "p25": 4.0, "p75": 9.5 },
+      "benchmark_kg_co2e_per_employee": { "median": 945, "p25": 600, "p75": 1425 }
+    },
+    "food_service": {
+      "eui_kbtu_sqft": { "median": 258.0, "p25": 160.0, "p75": 380.0 },
+      "electricity_kwh_sqft": { "median": 38.0, "p25": 22.0, "p75": 56.0 },
+      "natural_gas_therms_sqft": { "median": 0.80, "p25": 0.45, "p75": 1.30 },
+      "fuel_split": {
+        "electricity_pct": 0.48,
+        "natural_gas_pct": 0.48,
+        "other_pct": 0.04
+      },
+      "typical_occupant_density_sqft_per_person": 100,
+      "typical_operating_hours_per_week": 80,
+      "benchmark_kg_co2e_per_sqft": { "median": 25.8, "p25": 16.0, "p75": 38.0 },
+      "benchmark_kg_co2e_per_employee": { "median": 2580, "p25": 1600, "p75": 3800 }
+    },
+    "lodging": {
+      "eui_kbtu_sqft": { "median": 91.0, "p25": 60.0, "p75": 135.0 },
+      "electricity_kwh_sqft": { "median": 14.0, "p25": 9.0, "p75": 21.0 },
+      "natural_gas_therms_sqft": { "median": 0.25, "p25": 0.12, "p75": 0.42 },
+      "fuel_split": {
+        "electricity_pct": 0.52,
+        "natural_gas_pct": 0.42,
+        "other_pct": 0.06
+      },
+      "typical_occupant_density_sqft_per_person": 800,
+      "typical_operating_hours_per_week": 168,
+      "benchmark_kg_co2e_per_sqft": { "median": 9.1, "p25": 6.0, "p75": 13.5 },
+      "benchmark_kg_co2e_per_employee": { "median": 7280, "p25": 4800, "p75": 10800 }
+    }
+  }
+}
